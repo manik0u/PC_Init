@@ -15,3 +15,6 @@ __pycache__/
 # Builds
 dist/
 build/
+
+# Dépôt git imbriqué (référence locale, géré séparément)
+ubuntu-config/
