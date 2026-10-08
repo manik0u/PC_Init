@@ -1,0 +1,13 @@
+stages:
+  - lint
+
+shellcheck:
+  stage: lint
+  tags:
+    - shell
+  # Runner à exécuteur shell : l'image Docker est ignorée, on télécharge le binaire statique
+  script:
+    - 'rep_sc=$(mktemp -d)'
+    - 'curl -sSL -o "$rep_sc/shellcheck.tar.xz" https://github.com/koalaman/shellcheck/releases/download/v0.10.0/shellcheck-v0.10.0.linux.x86_64.tar.xz'
+    - 'tar -xJf "$rep_sc/shellcheck.tar.xz" -C "$rep_sc"'
+    - '"$rep_sc/shellcheck-v0.10.0/shellcheck" init_pc.sh'

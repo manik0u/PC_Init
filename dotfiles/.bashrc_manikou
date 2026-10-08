@@ -1,0 +1,6 @@
+# Exemple de dotfile déployé par init_pc.sh dans $HOME
+# Chaque fichier de ce répertoire est lié symboliquement dans $HOME
+# (les fichiers existants sont sauvegardés avec le suffixe .avant_init_<date>).
+alias ll='ls -alF'
+alias gs='git status'
+export EDITOR=vim

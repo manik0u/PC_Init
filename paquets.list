@@ -1,0 +1,8 @@
+# Paquets à installer par init_pc.sh (un par ligne, # pour un commentaire)
+curl
+git
+vim
+htop
+unzip
+rsync
+tmux
