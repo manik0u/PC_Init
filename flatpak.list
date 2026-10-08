@@ -1,0 +1,51 @@
+## Flatpaks à gérer selon le schéma suivant :
+#add:flatpakpackagename
+#del:flatpakpackagename
+# (le dépôt flathub est ajouté automatiquement s'il est absent)
+
+# Multimedia
+add:de.haeckerfelix.Shortwave
+
+# Graphisme
+add:com.github.finefindus.eyedropper
+
+# Internet
+add:io.github.ungoogled_software.ungoogled_chromium
+add:io.gitlab.librewolf-community
+
+# Utilitaires
+del:com.usebottles.bottles
+add:com.github.tchx84.Flatseal
+add:org.gnome.World.PikaBackup
+#add:com.mattjakeman.ExtensionManager
+add:app.drey.Dialect
+add:io.gitlab.adhami3310.Impression
+add:net.nokyan.Resources
+add:com.github.hugolabe.Wike
+add:org.gnome.Weather
+add:org.gnome.SimpleScan
+add:org.gnome.SoundRecorder
+add:it.mijorus.gearlever
+add:org.remmina.Remmina
+
+# Bureautique
+add:org.onlyoffice.desktopeditors
+
+# Fun
+add:io.gitlab.gregorni.Letterpress
+add:org.gnome.Snapshot
+add:com.vixalien.sticky
+add:io.gitlab.news_flash.NewsFlash
+add:com.cassidyjames.butler
+
+# Jeux
+add:com.valvesoftware.Steam
+add:org.gnome.TwentyFortyEight
+
+# Finances
+add:fr.free.Homebank
+
+# Communication
+add:im.riot.Riot
+
+## Fin de liste ##

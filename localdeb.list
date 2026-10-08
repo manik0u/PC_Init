@@ -1,0 +1,13 @@
+## Paquets .deb locaux à gérer selon le schéma suivant :
+#add:URL_localdeb - l'URL doit être le lien direct vers le fichier *.deb
+#del:URL_localdeb - l'URL doit être le lien direct vers le fichier *.deb
+# (module apt uniquement, ignoré sous Fedora ; fichiers dans $HOME/Applications/LocalDEBS)
+
+# ProtonMail
+add:https://proton.me/download/mail/linux/ProtonMail-desktop-beta.deb
+
+# Mots de passe
+del:https://github.com/bitwarden/clients/releases/download/desktop-v2025.2.1/Bitwarden-2025.2.1-amd64.deb
+add:https://github.com/bitwarden/clients/releases/download/desktop-v2026.2.1/Bitwarden-2026.2.1-amd64.deb
+
+## Fin de liste ##

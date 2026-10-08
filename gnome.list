@@ -1,0 +1,77 @@
+## Configurations GNOME à appliquer selon le schéma suivant :
+# add:gsettings <commande>
+# (exécutées en tant que l'utilisateur ciblé, pas en root ; session graphique requise
+#  pour certaines clés, les échecs sont journalisés sans interrompre le script)
+
+## Customisation de l'interface GNOME
+# Boutons de fenêtre
+add:gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize,close"
+
+# Suramplification
+add:gsettings set org.gnome.desktop.sound allow-volume-above-100-percent true
+
+# Détacher les popups des fenêtres
+add:gsettings set org.gnome.mutter attach-modal-dialogs false
+
+# Affichage du calendrier dans le panneau supérieur
+add:gsettings set org.gnome.desktop.calendar show-weekdate true
+
+# Modification du format de la date et heure
+add:gsettings set org.gnome.desktop.interface clock-show-date true
+add:gsettings set org.gnome.desktop.interface clock-show-seconds true
+add:gsettings set org.gnome.desktop.interface clock-show-weekday true
+add:gsettings set org.gnome.desktop.interface clock-format 24h
+
+# Paramétrage touchpad
+add:gsettings set org.gnome.desktop.peripherals.touchpad disable-while-typing true
+add:gsettings set org.gnome.desktop.peripherals.touchpad click-method "areas"
+
+# Désactivation des sons système
+add:gsettings set org.gnome.desktop.wm.preferences audible-bell false
+
+# Mode nuit
+add:gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled false
+
+# Épuration des fichiers temporaires et de la corbeille de plus de 30 jours
+add:gsettings set org.gnome.desktop.privacy remove-old-temp-files true
+add:gsettings set org.gnome.desktop.privacy remove-old-trash-files true
+#add:gsettings set org.gnome.desktop.privacy old-files-age "uint32 30"
+
+## Confidentialité
+add:gsettings set org.gnome.desktop.privacy report-technical-problems false
+add:gsettings set org.gnome.desktop.privacy send-software-usage-stats false
+
+## Personnalisation
+# Thème sombre
+#add:gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
+add:gsettings set org.gnome.desktop.interface gtk-theme "adw-gtk3-dark"
+
+## Configuration Nautilus
+add:gsettings set org.gnome.nautilus.preferences open-folder-on-dnd-hover false
+add:gsettings set org.gnome.nautilus.preferences click-policy "double"
+add:gsettings set org.gtk.Settings.FileChooser sort-directories-first true
+add:gsettings set org.gtk.gtk4.Settings.FileChooser sort-directories-first true
+
+## GNOME Logiciels
+add:gsettings set org.gnome.software download-updates false
+add:gsettings set org.gnome.software show-only-free-apps false
+
+## GNOME Text Editor
+add:gsettings set org.gnome.TextEditor highlight-current-line false
+add:gsettings set org.gnome.TextEditor restore-session false
+add:gsettings set org.gnome.TextEditor show-line-numbers true
+
+## Dash-to-dock
+add:gsettings set org.gnome.shell.extensions.dash-to-dock dock-position "BOTTOM"
+add:gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed false
+add:gsettings set org.gnome.shell.extensions.dash-to-dock autohide-in-fullscreen true
+add:gsettings set org.gnome.shell.extensions.dash-to-dock disable-overview-on-startup true
+
+# Activation de l'ouverture des applications en premier plan
+add:gsettings set org.gnome.desktop.wm.preferences auto-raise 'true'
+add:gsettings set org.gnome.desktop.wm.preferences focus-new-windows "strict"
+
+# Paramètres de clavier FR - Verr num
+add:gsettings set org.gnome.desktop.input-sources xkb-options "['caps:shiftlock']"
+
+## Fin de liste ##

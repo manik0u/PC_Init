@@ -1,0 +1,27 @@
+## Snaps à gérer selon le schéma suivant :
+#add:snappackagename
+#del:snappackagename
+# (module ignoré automatiquement si snap est absent, cas Fedora typique)
+
+# Multimedia
+add:spotify
+
+# Internet
+## suppression de firefox car installation en .deb
+del:firefox
+
+# Utilitaires
+## suppression de remmina car installation en flatpak
+del:remmina
+## suppression de boxes car installation en .deb
+del:gnome-boxes
+
+# Mots de passe
+## suppression de bitwarden car installation en .deb local
+del:bitwarden
+
+# Utilitaire
+## suppression de gnome-calendar car installation en .deb
+del:gnome-calendar
+
+## Fin de liste ##
