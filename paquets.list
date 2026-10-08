@@ -1,7 +1,7 @@
-# Paquets à installer par init_pc.sh (un par ligne, # pour un commentaire)
+# Paquets communs Fedora et Ubuntu/Debian (un par ligne, # pour un commentaire)
+# Un paquet dont le nom diffère doit aller dans paquets_apt.list / paquets_dnf.list
 curl
 git
-vim
 htop
 unzip
 rsync

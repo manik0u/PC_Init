@@ -1,0 +1,3 @@
+# Paquets spécifiques Fedora/dnf (fusionnés avec paquets.list)
+vim-enhanced
+dnf-utils
