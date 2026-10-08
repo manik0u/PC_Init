@@ -2,50 +2,50 @@
 #add:flatpakpackagename
 #del:flatpakpackagename
 # (le dépôt flathub est ajouté automatiquement s'il est absent)
+# Miroir des applications installées sur le poste de référence - 2026-10-09
 
-# Multimedia
-add:de.haeckerfelix.Shortwave
-
-# Graphisme
-add:com.github.finefindus.eyedropper
-
-# Internet
-add:io.github.ungoogled_software.ungoogled_chromium
-add:io.gitlab.librewolf-community
-
-# Utilitaires
-del:com.usebottles.bottles
-add:com.github.tchx84.Flatseal
-add:org.gnome.World.PikaBackup
-#add:com.mattjakeman.ExtensionManager
+add:ai.lmstudio.lm-studio
 add:app.drey.Dialect
-add:io.gitlab.adhami3310.Impression
-add:net.nokyan.Resources
-add:com.github.hugolabe.Wike
-add:org.gnome.Weather
-add:org.gnome.SimpleScan
-add:org.gnome.SoundRecorder
-add:it.mijorus.gearlever
-add:org.remmina.Remmina
-
-# Bureautique
-add:org.onlyoffice.desktopeditors
-
-# Fun
-add:io.gitlab.gregorni.Letterpress
-add:org.gnome.Snapshot
-add:com.vixalien.sticky
-add:io.gitlab.news_flash.NewsFlash
+add:app.grayjay.Grayjay
 add:com.cassidyjames.butler
-
-# Jeux
+add:com.github.finefindus.eyedropper
+add:com.github.gijsgoudzwaard.image-optimizer
+add:com.github.IsmaelMartinez.teams_for_linux
+add:com.github.muriloventuroso.pdftricks
+add:com.github.phase1geo.minder
+add:com.github.tchx84.Flatseal
+add:com.jeffser.Alpaca
+add:com.jgraph.drawio.desktop
+add:com.matthiasn.lotti
+add:com.mattjakeman.ExtensionManager
+add:com.microsoft.Edge
+add:com.nextcloud.desktopclient.nextcloud
+add:com.rtosta.zapzap
+add:com.usebottles.bottles
 add:com.valvesoftware.Steam
-add:org.gnome.TwentyFortyEight
-
-# Finances
-add:fr.free.Homebank
-
-# Communication
-add:im.riot.Riot
+add:de.haeckerfelix.Shortwave
+add:dev.geopjr.Collision
+add:io.github.alainm23.planify
+add:io.github.flattool.Warehouse
+add:io.github.ungoogled_software.ungoogled_chromium
+add:io.gitlab.adhami3310.Converter
+add:io.gitlab.adhami3310.Impression
+add:io.gitlab.news_flash.NewsFlash
+add:it.mijorus.gearlever
+add:me.proton.Mail
+add:net.nokyan.Resources
+add:net.thunderbird.Thunderbird
+add:org.gnome.Fractal
+add:org.gnome.seahorse.Application
+add:org.gnome.SoundRecorder
+add:org.gnome.World.PikaBackup
+add:org.kde.hashomatic
+add:org.kde.kate
+add:org.keepassxc.KeePassXC
+add:org.onlyoffice.desktopeditors
+add:org.qownnotes.QOwnNotes
+add:org.remmina.Remmina
+add:org.soundconverter.SoundConverter
+add:org.wireshark.Wireshark
 
 ## Fin de liste ##
