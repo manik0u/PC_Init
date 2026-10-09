@@ -43,8 +43,13 @@ add:gsettings set org.gnome.desktop.privacy send-software-usage-stats false
 
 ## Personnalisation
 # Thème sombre
-#add:gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
+add:gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
 add:gsettings set org.gnome.desktop.interface gtk-theme "adw-gtk3-dark"
+# Applications Flatpak/GTK : forcer la variante sombre dans settings.ini
+# (l'override Flatpak système expose xdg-config/gtk-3.0 et gtk-4.0 aux sandbox ;
+#  gtk-application-prefer-dark-theme=0 écrit par une application force le thème clair
+#  pour toutes les apps sandboxées, en ignorant la préférence du portail)
+add:for d in "$HOME/.config/gtk-3.0" "$HOME/.config/gtk-4.0"; do f="$d/settings.ini"; mkdir -p "$d"; if [ -f "$f" ]; then if grep -q '^gtk-application-prefer-dark-theme=' "$f"; then sed -i 's/^gtk-application-prefer-dark-theme=.*/gtk-application-prefer-dark-theme=1/' "$f"; else printf '\ngtk-application-prefer-dark-theme=1\n' >> "$f"; fi; fi; done
 
 ## Configuration Nautilus
 add:gsettings set org.gnome.nautilus.preferences open-folder-on-dnd-hover false
