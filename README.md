@@ -1,6 +1,6 @@
-# Manikou_Init
+# PC_Init
 
-Initialisation et configuration d'un PC Linux via un script idempotent, pour le groupe Experimentations AI. Fusion des approches Manikou_Init et ubuntu-config.
+Initialisation et configuration d'un PC Linux via un script idempotent, pour le groupe Experimentations AI. Fusion des approches PC_Init et ubuntu-config.
 
 **Distributions supportées : Fedora (dnf) et Ubuntu/Debian (apt)** — le gestionnaire de paquets est détecté automatiquement (priorité à `dnf`).
 
@@ -23,8 +23,8 @@ Initialisation et configuration d'un PC Linux via un script idempotent, pour le 
 ## Usage
 
 ```sh
-git clone https://git.example.com/experimentations-ai/Manikou_Init.git
-cd Manikou_Init
+git clone https://git.example.com/experimentations-ai/PC_Init.git
+cd PC_Init
 sudo ./init_pc.sh                # tout : maj, paquets, localdeb, snap, flatpak, appimages, dotfiles, GNOME, config, nettoyage
 ./init_pc.sh --sans-paquets      # modules sans root : appimages, dotfiles, GNOME
 ```

@@ -3,7 +3,7 @@
 ### init_pc.sh ###
 ##############################
 # Initialisation / configuration d'un PC Linux (Custom)
-# Fusion des approches Manikou_Init et ubuntu-config.
+# Fusion des approches PC_Init et ubuntu-config.
 # Distributions cibles : Fedora (dnf) et Ubuntu/Debian (apt).
 # Objectif : un script idempotent, relançable sans casser la machine.
 # Modules : mise à jour système, paquets natifs, .deb locaux, snap, flatpak,
@@ -337,7 +337,7 @@ if [ "$module_configuration_systeme" -eq 1 ]; then
     fichier_alias=/etc/profile.d/pc_init.sh
     if est_root; then
         if [ ! -f "$fichier_alias" ]; then
-            printf '# Alias ajoutés par init_pc.sh (Manikou_Init)\nalias ls="ls --color=auto"\nalias ll="ls -alF"\n' > "$fichier_alias"
+            printf '# Alias ajoutés par init_pc.sh (PC_Init)\nalias ls="ls --color=auto"\nalias ll="ls -alF"\n' > "$fichier_alias"
             chmod 644 "$fichier_alias"
             log "Alias système créés dans $fichier_alias."
         else
