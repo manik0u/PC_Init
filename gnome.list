@@ -44,12 +44,14 @@ add:gsettings set org.gnome.desktop.privacy send-software-usage-stats false
 ## Personnalisation
 # Thème sombre
 add:gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
-add:gsettings set org.gnome.desktop.interface gtk-theme "adw-gtk3-dark"
+# Adwaita-dark : variante sombre intégrée à GTK3 (aucun paquet à installer),
+# avec son équivalent org.gtk.Gtk3theme.Adwaita-dark sur Flathub pour les flatpaks
+add:gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
 # Applications Flatpak/GTK : forcer la variante sombre dans settings.ini
-# (l'override Flatpak système expose xdg-config/gtk-3.0 et gtk-4.0 aux sandbox ;
-#  gtk-application-prefer-dark-theme=0 écrit par une application force le thème clair
-#  pour toutes les apps sandboxées, en ignorant la préférence du portail)
-add:for d in "$HOME/.config/gtk-3.0" "$HOME/.config/gtk-4.0"; do f="$d/settings.ini"; mkdir -p "$d"; if [ -f "$f" ]; then if grep -q '^gtk-application-prefer-dark-theme=' "$f"; then sed -i 's/^gtk-application-prefer-dark-theme=.*/gtk-application-prefer-dark-theme=1/' "$f"; else printf '\ngtk-application-prefer-dark-theme=1\n' >> "$f"; fi; fi; done
+# (l'override Flatpak système, déployé par init_pc.sh, expose xdg-config/gtk-3.0 et
+#  gtk-4.0 aux sandbox ; gtk-application-prefer-dark-theme=0 écrit par une application
+#  force le thème clair pour toutes les apps sandboxées, en ignorant la préférence du portail)
+add:for d in "$HOME/.config/gtk-3.0" "$HOME/.config/gtk-4.0"; do f="$d/settings.ini"; mkdir -p "$d"; if [ ! -f "$f" ]; then printf '[Settings]\ngtk-application-prefer-dark-theme=1\n' > "$f"; elif ! grep -q '^\[Settings\]' "$f"; then sed -i '1i [Settings]\ngtk-application-prefer-dark-theme=1' "$f"; elif grep -q '^gtk-application-prefer-dark-theme=' "$f"; then sed -i 's/^gtk-application-prefer-dark-theme=.*/gtk-application-prefer-dark-theme=1/' "$f"; else sed -i '/^\[Settings\]/a gtk-application-prefer-dark-theme=1' "$f"; fi; done
 
 ## Configuration Nautilus
 add:gsettings set org.gnome.nautilus.preferences open-folder-on-dnd-hover false

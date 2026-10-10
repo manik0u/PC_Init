@@ -233,6 +233,13 @@ if [ "$module_flatpak" -eq 1 ]; then
             log "Ajout du dépôt flathub"
             log_cmd flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
         fi
+        # Override système : exposer les réglages GTK de l'utilisateur aux sandbox
+        # (les apps Flatpak GTK lisent le thème sombre dans ~/.config/gtk-3.0 et
+        #  gtk-4.0, voir le bloc « Thème sombre » de gnome.list)
+        if ! flatpak override --show --system 2>/dev/null | grep -q 'xdg-config/gtk-3.0'; then
+            log "Ajout de l'override système xdg-config/gtk-3.0 et xdg-config/gtk-4.0"
+            log_cmd flatpak override --system --filesystem=xdg-config/gtk-3.0 --filesystem=xdg-config/gtk-4.0
+        fi
         traiter_add() {
             if flatpak info "$1" >/dev/null 2>&1; then
                 log "OK: flatpak $1 déjà installé."

@@ -40,7 +40,7 @@ Tout ce qui touche au dossier personnel cible l'utilisateur qui a invoqué `sudo
 | `module_installation_paquets` | installe `paquets.list` + `paquets_<gestionnaire>.list` | non |
 | `module_localdeb` | télécharge et installe les `.deb` de `localdeb.list` dans `$HOME/Applications/LocalDEBS` | non, apt uniquement |
 | `module_snap` | installe/supprime les snaps de `snap.list` | non, ignoré si snap absent |
-| `module_flatpak` | installe/supprime les flatpaks de `flatpak.list`, ajoute flathub si absent | non |
+| `module_flatpak` | installe/supprime les flatpaks de `flatpak.list`, ajoute flathub si absent, override système exposant `xdg-config/gtk-3.0` et `gtk-4.0` aux sandbox (thème sombre) | non |
 | `module_appimage` | télécharge les appimages de `appimage.list` dans `$HOME/Applications/AppImages` | oui |
 | `module_dotfiles` | lie chaque fichier de `dotfiles/` dans le dossier personnel (existant sauvegardé) | oui |
 | `module_gnome` | applique les `gsettings` de `gnome.list` en tant qu'utilisateur ciblé | oui (session graphique recommandée) |
