@@ -287,6 +287,44 @@ if [ "$module_appimage" -eq 1 ]; then
             fi
         }
         lire_liste_add_del "$fichier_appimage"
+        # Post-traitement : ajoute GTK_THEME=Adwaita:dark aux fichiers de bureau
+        # AppImage. Les AppImages embarquent leur propre GTK et ignorent les
+        # réglages système, donc le thème doit être présent au lancement.
+        # Gear Lever réécrit les fichiers de bureau à chaque mise à jour
+        # (en perdant le préfixe env), cette étape est donc idempotente et
+        # auto-réparatrice : relancer le script restaure le préfixe.
+        appliquer_theme_appimages() {
+            local rep_desktops="$home_cible/.local/share/applications"
+            [ -d "$rep_desktops" ] || return 0
+            local fichier ligne_exec valeur nouvelle_ligne echappe
+            for fichier in "$rep_desktops"/*.desktop; do
+                [ -e "$fichier" ] || continue
+                ligne_exec=$(grep -m1 '^Exec=' "$fichier" 2>/dev/null || true)
+                # Uniquement les fichiers de bureau dont l'Exec référence une AppImage
+                case "$ligne_exec" in
+                    *.appimage*|*.AppImage*) ;;
+                    *) continue ;;
+                esac
+                # Idempotence : ne rien faire si GTK_THEME est déjà présent
+                case "$ligne_exec" in
+                    *GTK_THEME=*) continue ;;
+                esac
+                valeur="${ligne_exec#Exec=}"
+                if [[ "$valeur" == env\ * ]]; then
+                    valeur="env GTK_THEME=Adwaita:dark ${valeur#env }"
+                else
+                    valeur="env GTK_THEME=Adwaita:dark $valeur"
+                fi
+                nouvelle_ligne="Exec=$valeur"
+                # Échappe les caractères spéciaux sed dans la chaîne de remplacement
+                echappe=${nouvelle_ligne//\\/\\\\}
+                echappe=${echappe//&/\\&}
+                echappe=${echappe//|/\\|}
+                sed -i "s|^Exec=.*|${echappe}|" "$fichier"
+                log "Thème sombre appliqué: $fichier"
+            done
+        }
+        appliquer_theme_appimages
         log "Gestion des appimages terminée."
     fi
 fi

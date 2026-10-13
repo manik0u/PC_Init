@@ -2,6 +2,8 @@
 #add:URL_appimage - l'URL doit être le lien direct vers le fichier *.AppImage
 #del:URL_appimage - l'URL doit être le lien direct vers le fichier *.AppImage
 # (téléchargées dans $HOME/Applications/AppImages)
+# Le thème sombre (GTK_THEME=Adwaita:dark) est appliqué automatiquement aux
+# fichiers de bureau AppImage par init_pc.sh (idempotent, auto-réparateur).
 
 # Cloud
 #add:https://github.com/nextcloud-releases/desktop/releases/download/v3.16.0/Nextcloud-3.16.0-x86_64.AppImage
