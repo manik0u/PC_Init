@@ -1,6 +1,6 @@
-# PC_Init
+# Computer_Init
 
-Initialisation et configuration d'un PC Linux via un script idempotent, pour le groupe Experimentations AI. Fusion des approches PC_Init et ubuntu-config.
+Initialisation et configuration d'un PC Linux via un script idempotent, pour le groupe Experimentations AI. Fusion des approches Computer_Init et ubuntu-config.
 
 **Distributions supportées : Fedora (dnf) et Ubuntu/Debian (apt)** — le gestionnaire de paquets est détecté automatiquement (priorité à `dnf`).
 
@@ -23,14 +23,14 @@ Initialisation et configuration d'un PC Linux via un script idempotent, pour le 
 ## Usage
 
 ```sh
-git clone https://git.example.com/experimentations-ai/PC_Init.git
-cd PC_Init
+git clone https://git.example.com/experimentations-ai/Computer_Init.git
+cd Computer_Init
 sudo ./init_pc.sh                # tout : maj, paquets, localdeb, snap, flatpak, appimages, dotfiles, GNOME, config, nettoyage
 ./init_pc.sh --sans-paquets      # modules sans root : appimages, dotfiles, GNOME
 ```
 
 Un journal de chaque exécution est écrit dans `/tmp/init_pc_<date>.log`.
-Tout ce qui touche au dossier personnel cible l'utilisateur qui a invoqué `sudo` (`SUDO_USER`), pas root ; `PC_HOME_CIBLE` permet de surcharger le dossier ciblé.
+Tout ce qui touche au dossier personnel cible l'utilisateur qui a invoqué `sudo` (`SUDO_USER`), pas root ; `HOME_CIBLE` permet de surcharger le dossier ciblé.
 
 ## Modules
 
@@ -44,7 +44,7 @@ Tout ce qui touche au dossier personnel cible l'utilisateur qui a invoqué `sudo
 | `module_appimage` | télécharge les appimages de `appimage.list` dans `$HOME/Applications/AppImages`, puis force `GTK_THEME=Adwaita:dark` sur les fichiers de bureau AppImage | oui |
 | `module_dotfiles` | lie chaque fichier de `dotfiles/` dans le dossier personnel (existant sauvegardé) | oui |
 | `module_gnome` | applique les `gsettings` de `gnome.list` en tant qu'utilisateur ciblé | oui (session graphique recommandée) |
-| `module_configuration_systeme` | alias système dans `/etc/profile.d/pc_init.sh` | non |
+| `module_configuration_systeme` | alias système dans `/etc/profile.d/init_pc.sh` | non |
 | `module_nettoyage` | `dnf autoremove` / `apt-get autoremove` | non |
 
 Les modules s'activent/désactivent par les variables `module_*` en tête de `init_pc.sh`.

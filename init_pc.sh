@@ -2,8 +2,8 @@
 ##############################
 ### init_pc.sh ###
 ##############################
-# Initialisation / configuration d'un PC Linux (Custom)
-# Fusion des approches PC_Init et ubuntu-config.
+# Initialisation / configuration d'un PC Linux
+# Fusion des approches Computer_Init et ubuntu-config.
 # Distributions cibles : Fedora (dnf) et Ubuntu/Debian (apt).
 # Objectif : un script idempotent, relançable sans casser la machine.
 # Modules : mise à jour système, paquets natifs, .deb locaux, snap, flatpak,
@@ -22,9 +22,9 @@ set -euo pipefail
 rep_script=$(cd "$(dirname "$0")" && pwd)
 log="/tmp/init_pc_$(date +%Y%m%d_%H%M%S).log"
 # Utilisateur et dossier personnel ciblés (SUDO_USER quand le script est lancé via sudo)
-# PC_HOME_CIBLE permet de surcharger le dossier ciblé (tests, cas particuliers)
+# HOME_CIBLE permet de surcharger le dossier ciblé (tests, cas particuliers)
 utilisateur_cible=${SUDO_USER:-$(id -un)}
-home_cible=${PC_HOME_CIBLE:-$(getent passwd "$utilisateur_cible" | cut -d: -f6)}
+home_cible=${HOME_CIBLE:-$(getent passwd "$utilisateur_cible" | cut -d: -f6)}
 rep_applications="$home_cible/Applications"
 rep_appimages="$rep_applications/AppImages"
 rep_localdebs="$rep_applications/LocalDEBS"
@@ -379,10 +379,15 @@ fi
 ### Module : configuration système (idempotent, à étendre selon les besoins)
 if [ "$module_configuration_systeme" -eq 1 ]; then
     log ">> Configuration système"
-    fichier_alias=/etc/profile.d/pc_init.sh
+    fichier_alias=/etc/profile.d/init_pc.sh
     if est_root; then
+        # Migration : si l'ancien fichier existe et le nouveau non, le renommer
+        if [ -f /etc/profile.d/pc_init.sh ] && [ ! -f "$fichier_alias" ]; then
+            mv /etc/profile.d/pc_init.sh "$fichier_alias"
+            log "Migration: /etc/profile.d/pc_init.sh renommé en $fichier_alias."
+        fi
         if [ ! -f "$fichier_alias" ]; then
-            printf '# Alias ajoutés par init_pc.sh (PC_Init)\nalias ls="ls --color=auto"\nalias ll="ls -alF"\n' > "$fichier_alias"
+            printf '# Alias ajoutés par init_pc.sh (Computer_Init)\nalias ls="ls --color=auto"\nalias ll="ls -alF"\n' > "$fichier_alias"
             chmod 644 "$fichier_alias"
             log "Alias système créés dans $fichier_alias."
         else
