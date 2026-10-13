@@ -381,11 +381,6 @@ if [ "$module_configuration_systeme" -eq 1 ]; then
     log ">> Configuration système"
     fichier_alias=/etc/profile.d/init_pc.sh
     if est_root; then
-        # Migration : si l'ancien fichier existe et le nouveau non, le renommer
-        if [ -f /etc/profile.d/pc_init.sh ] && [ ! -f "$fichier_alias" ]; then
-            mv /etc/profile.d/pc_init.sh "$fichier_alias"
-            log "Migration: /etc/profile.d/pc_init.sh renommé en $fichier_alias."
-        fi
         if [ ! -f "$fichier_alias" ]; then
             printf '# Alias ajoutés par init_pc.sh (Computer_Init)\nalias ls="ls --color=auto"\nalias ll="ls -alF"\n' > "$fichier_alias"
             chmod 644 "$fichier_alias"
