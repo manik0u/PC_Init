@@ -4,6 +4,8 @@ Initialisation et configuration d'un PC Linux via un script idempotent, pour le 
 
 **Distributions supportées : Fedora (dnf) et Ubuntu/Debian (apt)** — le gestionnaire de paquets est détecté automatiquement (priorité à `dnf`).
 
+> **Source :** Ce projet est inspiré de [fedora-config](https://github.com/aaaaadrien/fedora-config).
+
 ## Structure
 
 ```
