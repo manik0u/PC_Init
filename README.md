@@ -1,4 +1,4 @@
-# Computer_Init
+# PC_Init
 
 Initialisation et configuration d'un PC Linux via un script idempotent.
 
@@ -26,7 +26,7 @@ Initialisation et configuration d'un PC Linux via un script idempotent.
 
 ```sh
 git clone <git-repo-url>
-cd Computer_Init
+cd PC_Init
 sudo ./init_pc.sh                # tout : maj, paquets, localdeb, snap, flatpak, appimages, dotfiles, GNOME, config, nettoyage
 ./init_pc.sh --sans-paquets      # modules sans root : appimages, dotfiles, GNOME
 ```
