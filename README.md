@@ -1,6 +1,6 @@
 # Computer_Init
 
-Initialisation et configuration d'un PC Linux via un script idempotent, pour le groupe Experimentations AI. Fusion des approches Computer_Init et ubuntu-config.
+Initialisation et configuration d'un PC Linux via un script idempotent, ubuntu-config.
 
 **Distributions supportées : Fedora (dnf) et Ubuntu/Debian (apt)** — le gestionnaire de paquets est détecté automatiquement (priorité à `dnf`).
 
