@@ -1,6 +1,6 @@
 # Computer_Init
 
-Initialisation et configuration d'un PC Linux via un script idempotent, ubuntu-config.
+Initialisation et configuration d'un PC Linux via un script idempotent.
 
 **Distributions supportées : Fedora (dnf) et Ubuntu/Debian (apt)** — le gestionnaire de paquets est détecté automatiquement (priorité à `dnf`).
 
