@@ -23,7 +23,7 @@ Initialisation et configuration d'un PC Linux via un script idempotent, pour le 
 ## Usage
 
 ```sh
-git clone https://git.example.com/experimentations-ai/Computer_Init.git
+git clone <git-repo-url>
 cd Computer_Init
 sudo ./init_pc.sh                # tout : maj, paquets, localdeb, snap, flatpak, appimages, dotfiles, GNOME, config, nettoyage
 ./init_pc.sh --sans-paquets      # modules sans root : appimages, dotfiles, GNOME
